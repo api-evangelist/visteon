@@ -1,0 +1,23 @@
+{
+  "title": "Visteon Vehicle Data Structure",
+  "description": "Structural documentation for the VehicleData object returned by the Visteon Phoenix Vehicle API",
+  "type": "object",
+  "fields": [
+    { "name": "speed", "type": "number", "required": false, "description": "Vehicle speed in km/h" },
+    { "name": "fuelLevel", "type": "integer", "required": false, "description": "Fuel percentage 0-100" },
+    { "name": "odometer", "type": "number", "required": false, "description": "Odometer in kilometers" },
+    { "name": "engineRunning", "type": "boolean", "required": false, "description": "Engine state" },
+    { "name": "gearPosition", "type": "string", "required": false, "description": "Current gear: P/R/N/D/1-6" },
+    {
+      "name": "hvac",
+      "type": "object",
+      "required": false,
+      "description": "HVAC system settings",
+      "fields": [
+        { "name": "temperature", "type": "number", "description": "Set temperature in Celsius" },
+        { "name": "fanSpeed", "type": "integer", "description": "Fan speed 0-7" },
+        { "name": "isAcOn", "type": "boolean", "description": "AC active state" }
+      ]
+    }
+  ]
+}

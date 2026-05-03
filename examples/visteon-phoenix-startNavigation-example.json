@@ -1,0 +1,39 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/navigation/route",
+    "headers": {
+      "X-Phoenix-API-Key": "{{VISTEON_PHOENIX_API_KEY}}",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "destination": {
+        "address": "1 Infinite Loop, Cupertino, CA 95014",
+        "latitude": 37.3318,
+        "longitude": -122.0312,
+        "name": "Apple Campus"
+      },
+      "avoidTolls": false,
+      "avoidHighways": false
+    }
+  },
+  "response": {
+    "status": 201,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": "route-abc123",
+      "destination": {
+        "address": "1 Infinite Loop, Cupertino, CA 95014",
+        "latitude": 37.3318,
+        "longitude": -122.0312,
+        "name": "Apple Campus"
+      },
+      "eta": "2026-05-03T15:45:00Z",
+      "distanceRemaining": 12500.0,
+      "timeRemaining": 1800,
+      "isActive": true
+    }
+  }
+}

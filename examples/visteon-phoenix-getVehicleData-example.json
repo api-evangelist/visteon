@@ -1,0 +1,28 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/vehicle/data",
+    "headers": {
+      "X-Phoenix-API-Key": "{{VISTEON_PHOENIX_API_KEY}}",
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "speed": 65.5,
+      "fuelLevel": 72,
+      "odometer": 24531.7,
+      "engineRunning": true,
+      "gearPosition": "D",
+      "hvac": {
+        "temperature": 21.5,
+        "fanSpeed": 3,
+        "isAcOn": true
+      }
+    }
+  }
+}

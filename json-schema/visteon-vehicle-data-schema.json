@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/visteon/main/json-schema/visteon-vehicle-data-schema.json",
+  "title": "Visteon Vehicle Data",
+  "description": "JSON Schema for vehicle telemetry and status data returned by the Visteon Phoenix Vehicle API",
+  "type": "object",
+  "properties": {
+    "speed": {
+      "type": "number",
+      "description": "Current vehicle speed in km/h",
+      "minimum": 0
+    },
+    "fuelLevel": {
+      "type": "integer",
+      "description": "Fuel level as percentage 0-100",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "odometer": {
+      "type": "number",
+      "description": "Odometer reading in kilometers",
+      "minimum": 0
+    },
+    "engineRunning": {
+      "type": "boolean",
+      "description": "Whether the engine is currently running"
+    },
+    "gearPosition": {
+      "type": "string",
+      "description": "Current transmission gear position",
+      "enum": ["P", "R", "N", "D", "1", "2", "3", "4", "5", "6"]
+    },
+    "hvac": {
+      "type": "object",
+      "description": "HVAC system status and settings",
+      "properties": {
+        "temperature": {
+          "type": "number",
+          "description": "Set cabin temperature in Celsius"
+        },
+        "fanSpeed": {
+          "type": "integer",
+          "description": "Fan speed level 0-7",
+          "minimum": 0,
+          "maximum": 7
+        },
+        "isAcOn": {
+          "type": "boolean",
+          "description": "Whether air conditioning is active"
+        }
+      }
+    }
+  }
+}

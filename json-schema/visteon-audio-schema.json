@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/visteon/main/json-schema/visteon-audio-schema.json",
+  "title": "Visteon Audio Status",
+  "description": "JSON Schema for audio system status returned by the Visteon Phoenix Audio API",
+  "type": "object",
+  "properties": {
+    "isPlaying": {
+      "type": "boolean",
+      "description": "Whether audio is currently playing"
+    },
+    "activeSource": {
+      "type": "string",
+      "description": "Currently active audio source identifier"
+    },
+    "volume": {
+      "type": "integer",
+      "description": "Current volume level 0-100",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "isMuted": {
+      "type": "boolean",
+      "description": "Whether the audio system is muted"
+    },
+    "sources": {
+      "type": "array",
+      "description": "Available audio sources",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "type": {
+            "type": "string",
+            "enum": ["fm", "am", "bluetooth", "usb", "aux", "streaming"]
+          },
+          "isActive": { "type": "boolean" }
+        },
+        "required": ["id", "name", "type"]
+      }
+    }
+  }
+}

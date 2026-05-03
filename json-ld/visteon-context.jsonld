@@ -1,0 +1,56 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "visteon": "https://developer.visteon.com/phoenix/",
+    "auto": "https://schema.org/",
+
+    "VehicleData": "auto:Vehicle",
+    "AudioStatus": "visteon:AudioStatus",
+    "NavigationRoute": "auto:Trip",
+    "Location": "auto:Place",
+    "MediaTrack": "auto:MusicRecording",
+    "Display": "visteon:Display",
+    "Call": "visteon:Call",
+
+    "speed": "auto:speed",
+    "fuelLevel": "visteon:fuelLevel",
+    "odometer": "auto:mileageFromOdometer",
+    "engineRunning": "visteon:engineRunning",
+    "gearPosition": "visteon:gearPosition",
+    "address": "auto:streetAddress",
+    "latitude": "auto:latitude",
+    "longitude": "auto:longitude",
+    "name": "schema:name",
+    "description": "schema:description",
+    "id": "@id",
+
+    "hvac": {
+      "@id": "visteon:hvac"
+    },
+    "temperature": "auto:temperature",
+    "fanSpeed": "visteon:fanSpeed",
+    "isAcOn": "visteon:isAcOn",
+    "isPlaying": "visteon:isPlaying",
+    "activeSource": "visteon:activeSource",
+    "volume": "visteon:volume",
+    "isMuted": "visteon:isMuted",
+    "isConnected": "visteon:isConnected",
+    "signalStrength": "visteon:signalStrength",
+    "batteryLevel": "visteon:batteryLevel",
+    "destination": {
+      "@id": "auto:itinerary",
+      "@type": "auto:Place"
+    },
+    "eta": "auto:arrivalTime",
+    "distanceRemaining": "visteon:distanceRemaining",
+    "timeRemaining": "visteon:timeRemaining",
+    "isActive": "visteon:isActive",
+    "title": "schema:name",
+    "artist": "schema:artist",
+    "album": "schema:inAlbum",
+    "duration": "schema:duration",
+    "resolution": "visteon:resolution",
+    "orientation": "visteon:orientation",
+    "brightness": "visteon:brightness"
+  }
+}

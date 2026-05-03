@@ -1,0 +1,124 @@
+vocabulary:
+  name: Visteon Phoenix API Vocabulary
+  description: >-
+    Vocabulary for the Visteon Phoenix automotive infotainment API, covering
+    connected cockpit, vehicle data, HMI, and automotive electronics terminology.
+  version: "1.0"
+  created: "2026-05-03"
+  tags:
+    - Automotive
+    - Connected Car
+    - Infotainment
+
+terms:
+  - term: Phoenix Platform
+    definition: >-
+      Visteon's automotive infotainment software platform that provides a JavaScript
+      API for building HTML5 applications running on SmartCore and display audio hardware.
+      Phoenix Studio enables app development with hardware simulation.
+    tags:
+      - Platform
+      - Core
+
+  - term: SmartCore
+    definition: >-
+      Visteon's high-performance cockpit domain controller hardware platform that
+      consolidates multiple ECU functions into a single compute module. SmartCore
+      supports multi-display experiences and centralizes infotainment, cluster,
+      and ADAS processing.
+    tags:
+      - Hardware
+      - Platform
+
+  - term: HMI
+    definition: >-
+      Human-Machine Interface - the in-vehicle display, touchscreen, and interaction
+      layer that drivers and passengers use to interact with the infotainment system,
+      navigation, climate control, and connected services.
+    tags:
+      - User Interface
+      - Core
+
+  - term: Audio Source
+    definition: >-
+      An input source for the vehicle audio system, such as FM radio, AM radio,
+      Bluetooth audio streaming, USB media, auxiliary input, or internet radio.
+      Only one source can be active at a time.
+    tags:
+      - Audio
+      - Media
+
+  - term: Vehicle Data
+    definition: >-
+      Real-time telemetry and status information from vehicle systems including
+      speed, fuel level, odometer, engine state, gear position, and HVAC settings.
+      Accessed via the Phoenix Vehicle API.
+    tags:
+      - Telemetry
+      - Vehicle
+
+  - term: HVAC
+    definition: >-
+      Heating, Ventilation, and Air Conditioning - the climate control system.
+      Exposed via the Phoenix Vehicle API with temperature, fan speed, and AC on/off state.
+    tags:
+      - Climate
+      - Vehicle
+
+  - term: Navigation Route
+    definition: >-
+      A planned path from the vehicle's current position to a destination, including
+      turn-by-turn waypoints, estimated time of arrival (ETA), and remaining distance.
+    tags:
+      - Navigation
+      - Core
+
+  - term: Point of Interest (POI)
+    definition: >-
+      A notable location such as a gas station, restaurant, hotel, or attraction that
+      can be searched via the Navigation API and used as a navigation destination.
+    tags:
+      - Navigation
+      - Location
+
+  - term: Cockpit Domain Controller
+    definition: >-
+      A centralized compute platform that consolidates previously separate ECUs for
+      infotainment, digital cluster, and driver assistance into a single high-performance
+      unit. Visteon's SmartCore HPC targets the premium segment.
+    tags:
+      - Hardware
+      - Architecture
+
+  - term: Display Audio
+    definition: >-
+      An entry-to-mid-range head unit form factor that provides touchscreen infotainment
+      with audio, phone, media, and navigation, typically without a full digital cluster.
+    tags:
+      - Hardware
+      - Platform
+
+  - term: Remote UI
+    definition: >-
+      A Phoenix API capability enabling applications to render UI content on remote
+      displays within the vehicle cockpit, supporting multi-screen experiences where
+      content is streamed to secondary screens.
+    tags:
+      - Display
+      - Multi-Screen
+
+  - term: Media Library
+    definition: >-
+      A browsable catalog of music, video, and photo content available from connected
+      devices such as USB drives or paired mobile phones.
+    tags:
+      - Media
+      - Content
+
+  - term: Device Manager
+    definition: >-
+      A Phoenix API component that lists and manages connected media devices (USB drives,
+      Bluetooth devices) and their available content libraries.
+    tags:
+      - Device Management
+      - Media
