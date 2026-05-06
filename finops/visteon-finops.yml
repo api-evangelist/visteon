@@ -8,141 +8,51 @@ alignedWith:
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 provider: Visteon
 providerId: visteon
-publisherName: Visteon
-serviceCategory: API
+publisherName: Visteon Corporation
+serviceCategory: Automotive Tier-1
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - Automotive
-  - Connected Car
-  - Infotainment
-  - IoT
   - FinOps
-  - Cost Management
   - FOCUS
-description: FinOps framework definition for the Visteon API surface. Provides a FOCUS-aligned mapping
-  for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+  - Automotive
+  - OEM Tier-1
+description: Visteon is an automotive Tier-1 supplier; spend is dominated by hardware unit-price
+  programs and engineering services, not metered API consumption. The artifact retains the FinOps
+  shape only as a placeholder for catalog completeness.
+sources:
+  - https://www.visteon.com/
+notes: No metered API billing or FOCUS-aligned cost-and-usage feed is published.
 billingModel:
-  pricingCategory: Usage-Based
-  billingFrequency: Monthly
+  pricingCategory: Program / Supply Contract
+  billingFrequency: Per-Invoice
   billingCurrency: USD
   chargeCategories:
-    - Usage
     - Purchase
-    - Tax
-    - Credit
-    - Adjustment
-  chargeFrequency: Recurring
 focusColumns:
   ServiceName: Visteon
-  ServiceCategory: Developer Tools / API
+  ServiceCategory: Automotive Tier-1
   ProviderName: Visteon
-  PublisherName: Visteon
-  InvoiceIssuerName: Visteon
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  PublisherName: Visteon Corporation
   BillingCurrency: USD
-  ChargeCategory: Usage
 meters:
-  - name: api_requests
-    description: Count of billable API requests
-    unit: request
+  - name: program_engagement
+    unit: varies
     aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
-    aggregation: sum
-    dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: Visteon Phoenix API
-    baseURL: https://developer.visteon.com/phoenix
-    tags:
-      - Audio
-      - Automotive
-      - Connected Car
-      - HMI
-      - HTML5
-      - Infotainment
-      - JavaScript
-      - Navigation
-      - Vehicle Data
-    serviceName: Visteon Phoenix API
-    serviceCategory: API
-  - name: Visteon Phoenix SDK
-    baseURL: https://developer.visteon.com/phoenix
-    tags:
-      - Automotive
-      - Development Tools
-      - HTML5
-      - Infotainment
-      - JavaScript
-      - SDK
-    serviceName: Visteon Phoenix SDK
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+principles:
+  - name: Visibility
+    description: Spend visibility is delivered through the OEM purchase-order / Tier-1 program
+      reporting cadence; there is no public Visteon usage API.
+  - name: Allocation
+    description: Costs allocate to the vehicle program / model line; allocation handled in the
+      OEM's PLM and program accounting.
+  - name: Optimization
+    description: Optimization levers are commercial - unit-price negotiation across vehicle
+      volume commitments and program lifetime.
+  - name: Accountability
+    description: OEM program management owns spend on the buyer side; Visteon's program account
+      manages the supplier-side commercial relationship.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
