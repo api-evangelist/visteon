@@ -74,7 +74,7 @@ apis:
     properties:
       - type: Documentation
         url: https://developer.visteon.com/phoenix/sdk.html
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developer.visteon.com/phoenix/
     contact:
       - FN: Visteon Developer Network
