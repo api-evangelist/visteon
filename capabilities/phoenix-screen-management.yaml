@@ -1,0 +1,114 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Visteon Phoenix API — Screen Management
+  description: 'Visteon Phoenix API — Screen Management. 2 operations. Lead operation: List Displays. Self-contained Naftiko
+    capability covering one Visteon business surface.'
+  tags:
+  - Visteon
+  - Screen Management
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    VISTEON_API_KEY: VISTEON_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: phoenix-screen-management
+    baseUri: https://developer.visteon.com/phoenix/api
+    description: Visteon Phoenix API — Screen Management business capability. Self-contained, no shared references.
+    resources:
+    - name: screen-displays
+      path: /screen/displays
+      operations:
+      - name: listdisplays
+        method: GET
+        description: List Displays
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: screen-displays-displayId
+      path: /screen/displays/{displayId}
+      operations:
+      - name: getdisplay
+        method: GET
+        description: Get Display
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: displayId
+          in: path
+          type: string
+          description: Identifier of the display
+          required: true
+    authentication:
+      type: apikey
+      key: X-Phoenix-API-Key
+      value: '{{env.VISTEON_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: phoenix-screen-management-rest
+    port: 8080
+    description: REST adapter for Visteon Phoenix API — Screen Management. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/screen/displays
+      name: screen-displays
+      description: REST surface for screen-displays.
+      operations:
+      - method: GET
+        name: listdisplays
+        description: List Displays
+        call: phoenix-screen-management.listdisplays
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/screen/displays/{displayid}
+      name: screen-displays-displayid
+      description: REST surface for screen-displays-displayId.
+      operations:
+      - method: GET
+        name: getdisplay
+        description: Get Display
+        call: phoenix-screen-management.getdisplay
+        with:
+          displayId: rest.displayId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: phoenix-screen-management-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Visteon Phoenix API — Screen Management. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-displays
+      description: List Displays
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: phoenix-screen-management.listdisplays
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-display
+      description: Get Display
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: phoenix-screen-management.getdisplay
+      with:
+        displayId: tools.displayId
+      outputParameters:
+      - type: object
+        mapping: $.

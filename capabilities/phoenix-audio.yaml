@@ -1,0 +1,213 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Visteon Phoenix API — Audio
+  description: 'Visteon Phoenix API — Audio. 5 operations. Lead operation: List Audio Sources. Self-contained Naftiko capability
+    covering one Visteon business surface.'
+  tags:
+  - Visteon
+  - Audio
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    VISTEON_API_KEY: VISTEON_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: phoenix-audio
+    baseUri: https://developer.visteon.com/phoenix/api
+    description: Visteon Phoenix API — Audio business capability. Self-contained, no shared references.
+    resources:
+    - name: audio-sources
+      path: /audio/sources
+      operations:
+      - name: listaudiosources
+        method: GET
+        description: List Audio Sources
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: audio-sources-sourceId-activate
+      path: /audio/sources/{sourceId}/activate
+      operations:
+      - name: activateaudiosource
+        method: POST
+        description: Activate Audio Source
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: sourceId
+          in: path
+          type: string
+          description: Identifier of the audio source to activate
+          required: true
+    - name: audio-status
+      path: /audio/status
+      operations:
+      - name: getaudiostatus
+        method: GET
+        description: Get Audio Status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: audio-volume
+      path: /audio/volume
+      operations:
+      - name: getvolume
+        method: GET
+        description: Get Volume
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: setvolume
+        method: PUT
+        description: Set Volume
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: X-Phoenix-API-Key
+      value: '{{env.VISTEON_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: phoenix-audio-rest
+    port: 8080
+    description: REST adapter for Visteon Phoenix API — Audio. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/audio/sources
+      name: audio-sources
+      description: REST surface for audio-sources.
+      operations:
+      - method: GET
+        name: listaudiosources
+        description: List Audio Sources
+        call: phoenix-audio.listaudiosources
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/audio/sources/{sourceid}/activate
+      name: audio-sources-sourceid-activate
+      description: REST surface for audio-sources-sourceId-activate.
+      operations:
+      - method: POST
+        name: activateaudiosource
+        description: Activate Audio Source
+        call: phoenix-audio.activateaudiosource
+        with:
+          sourceId: rest.sourceId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/audio/status
+      name: audio-status
+      description: REST surface for audio-status.
+      operations:
+      - method: GET
+        name: getaudiostatus
+        description: Get Audio Status
+        call: phoenix-audio.getaudiostatus
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/audio/volume
+      name: audio-volume
+      description: REST surface for audio-volume.
+      operations:
+      - method: GET
+        name: getvolume
+        description: Get Volume
+        call: phoenix-audio.getvolume
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: setvolume
+        description: Set Volume
+        call: phoenix-audio.setvolume
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: phoenix-audio-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Visteon Phoenix API — Audio. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-audio-sources
+      description: List Audio Sources
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: phoenix-audio.listaudiosources
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: activate-audio-source
+      description: Activate Audio Source
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: phoenix-audio.activateaudiosource
+      with:
+        sourceId: tools.sourceId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-audio-status
+      description: Get Audio Status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: phoenix-audio.getaudiostatus
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-volume
+      description: Get Volume
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: phoenix-audio.getvolume
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: set-volume
+      description: Set Volume
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: phoenix-audio.setvolume
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
