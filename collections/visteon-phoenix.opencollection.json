@@ -1,0 +1,346 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Visteon Phoenix API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Phoenix-API-Key",
+      "value": "{{X-Phoenix-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Audio",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Audio Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.visteon.com/phoenix/api/audio/status"
+          },
+          "docs": "Returns the current audio status including playback state, active audio source, volume level, and mute state."
+        },
+        {
+          "info": {
+            "name": "Get Volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.visteon.com/phoenix/api/audio/volume"
+          },
+          "docs": "Returns the current master volume level and mute status."
+        },
+        {
+          "info": {
+            "name": "Set Volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://developer.visteon.com/phoenix/api/audio/volume",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets the master volume level for the infotainment system."
+        },
+        {
+          "info": {
+            "name": "List Audio Sources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.visteon.com/phoenix/api/audio/sources"
+          },
+          "docs": "Returns all available audio sources such as FM radio, AM radio, Bluetooth audio, USB media, and auxiliary input."
+        },
+        {
+          "info": {
+            "name": "Activate Audio Source",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer.visteon.com/phoenix/api/audio/sources/:sourceId/activate",
+            "params": [
+              {
+                "name": "sourceId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the audio source to activate"
+              }
+            ]
+          },
+          "docs": "Switches the active audio source to the specified source."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Phone",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Phone Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.visteon.com/phoenix/api/phone/status"
+          },
+          "docs": "Returns the current phone connection status including Bluetooth pairing state, signal strength, and active call status."
+        },
+        {
+          "info": {
+            "name": "List Active Calls",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.visteon.com/phoenix/api/phone/calls"
+          },
+          "docs": "Returns a list of current active or on-hold phone calls."
+        },
+        {
+          "info": {
+            "name": "Make Call",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer.visteon.com/phoenix/api/phone/calls",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiates an outgoing phone call to the specified number."
+        },
+        {
+          "info": {
+            "name": "End Call",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://developer.visteon.com/phoenix/api/phone/calls/:callId",
+            "params": [
+              {
+                "name": "callId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the call to terminate"
+              }
+            ]
+          },
+          "docs": "Terminates an active phone call."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Media",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Browse Media Library",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.visteon.com/phoenix/api/media/library",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by media type (music, video, photos)"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Pagination offset"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page"
+              }
+            ]
+          },
+          "docs": "Browses the media library returning available media items from connected devices. Supports pagination and filtering by media type."
+        },
+        {
+          "info": {
+            "name": "Get Now Playing",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.visteon.com/phoenix/api/media/nowplaying"
+          },
+          "docs": "Returns information about the currently playing media track."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Navigation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Active Route",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.visteon.com/phoenix/api/navigation/route"
+          },
+          "docs": "Returns the currently active navigation route including waypoints and ETA."
+        },
+        {
+          "info": {
+            "name": "Start Navigation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer.visteon.com/phoenix/api/navigation/route",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Starts navigation to a specified destination address or coordinates."
+        },
+        {
+          "info": {
+            "name": "Cancel Navigation",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://developer.visteon.com/phoenix/api/navigation/route"
+          },
+          "docs": "Cancels the currently active navigation route."
+        },
+        {
+          "info": {
+            "name": "Search Points of Interest",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.visteon.com/phoenix/api/navigation/search",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Search query string (e.g. \"gas station\", \"restaurant\")"
+              },
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude for search center"
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude for search center"
+              },
+              {
+                "name": "radius",
+                "value": "",
+                "type": "query",
+                "description": "Search radius in meters"
+              }
+            ]
+          },
+          "docs": "Searches for points of interest near the current vehicle location or a specified coordinate."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Vehicle",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Vehicle Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.visteon.com/phoenix/api/vehicle/data"
+          },
+          "docs": "Returns current vehicle telemetry data including speed, fuel level, odometer, engine status, and HVAC settings."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Screen Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Displays",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.visteon.com/phoenix/api/screen/displays"
+          },
+          "docs": "Returns all display screens available in the vehicle cockpit including instrument cluster, center stack, and passenger displays."
+        },
+        {
+          "info": {
+            "name": "Get Display",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.visteon.com/phoenix/api/screen/displays/:displayId",
+            "params": [
+              {
+                "name": "displayId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the display"
+              }
+            ]
+          },
+          "docs": "Returns configuration and state of a specific display screen."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
