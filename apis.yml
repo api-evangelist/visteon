@@ -43,9 +43,9 @@ apis:
     properties:
       - type: Documentation
         url: https://developer.visteon.com/phoenix/api.html
-      - type: SDK
+      - type: SDKs
         url: https://developer.visteon.com/phoenix/sdk.html
-      - type: Developer Portal
+      - type: DeveloperPortal
         url: https://developer.visteon.com/phoenix/
       - type: OpenAPI
         url: openapi/visteon-phoenix-openapi.yml
@@ -83,7 +83,7 @@ common:
     url: https://www.linkedin.com/company/visteon
   - type: Website
     url: https://www.visteon.com
-  - type: Developer Portal
+  - type: DeveloperPortal
     url: https://developer.visteon.com/phoenix/
   - type: OpenAPI
     url: openapi/visteon-phoenix-openapi.yml
