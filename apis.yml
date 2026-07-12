@@ -77,6 +77,10 @@ apis:
       - FN: Visteon Developer Network
         url: https://developer.visteon.com/phoenix/
 common:
+  - type: DomainSecurity
+    url: security/visteon-domain-security.yml
+  - type: Authentication
+    url: authentication/visteon-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/visteon
   - type: LinkedIn
