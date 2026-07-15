@@ -77,6 +77,8 @@ apis:
       - FN: Visteon Developer Network
         url: https://developer.visteon.com/phoenix/
 common:
+  - type: AgenticAccess
+    url: agentic-access/visteon-agentic-access.yml
   - type: DomainSecurity
     url: security/visteon-domain-security.yml
   - type: Authentication
