@@ -1,0 +1,87 @@
+openapi: 3.1.0
+info:
+  title: Visteon Phoenix Audio Vehicle API
+  description: The Phoenix API is an automotive-oriented JavaScript interface for building HTML5 applications on Visteon's Phoenix infotainment platform. The API provides access to vehicle cockpit domains including audio playback and volume control, phone call management, media library browsing, navigation routing, screen and display management, remote UI rendering, and vehicle data such as speed, fuel level, and HVAC status. Applications written with the Phoenix API run across Visteon SmartCore and display audio infotainment hardware platforms.
+  version: '2.0'
+  contact:
+    name: Visteon Developer Network
+    url: https://developer.visteon.com/phoenix/
+  license:
+    name: Visteon Developer License
+    url: https://developer.visteon.com/phoenix/
+  termsOfService: https://www.visteon.com/legal/
+servers:
+- url: https://developer.visteon.com/phoenix/api
+  description: Visteon Phoenix Platform API
+security:
+- ApiKeyAuth: []
+tags:
+- name: Vehicle
+  description: Vehicle data including speed, fuel, HVAC, and door status
+paths:
+  /vehicle/data:
+    get:
+      operationId: getVehicleData
+      summary: Get Vehicle Data
+      description: Returns current vehicle telemetry data including speed, fuel level, odometer, engine status, and HVAC settings.
+      tags:
+      - Vehicle
+      responses:
+        '200':
+          description: Vehicle data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VehicleData'
+        '500':
+          description: Internal server error
+components:
+  schemas:
+    VehicleData:
+      type: object
+      description: Vehicle telemetry and status data
+      properties:
+        speed:
+          type: number
+          description: Current vehicle speed in km/h
+        fuelLevel:
+          type: integer
+          description: Fuel level as percentage 0-100
+        odometer:
+          type: number
+          description: Odometer reading in kilometers
+        engineRunning:
+          type: boolean
+        gearPosition:
+          type: string
+          enum:
+          - P
+          - R
+          - N
+          - D
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+        hvac:
+          type: object
+          properties:
+            temperature:
+              type: number
+              description: Set temperature in Celsius
+            fanSpeed:
+              type: integer
+              minimum: 0
+              maximum: 7
+            isAcOn:
+              type: boolean
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Phoenix-API-Key
+externalDocs:
+  description: Visteon Phoenix API Documentation
+  url: https://developer.visteon.com/phoenix/api.html

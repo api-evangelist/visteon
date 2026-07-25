@@ -1,0 +1,193 @@
+openapi: 3.1.0
+info:
+  title: Visteon Phoenix Audio Navigation API
+  description: The Phoenix API is an automotive-oriented JavaScript interface for building HTML5 applications on Visteon's Phoenix infotainment platform. The API provides access to vehicle cockpit domains including audio playback and volume control, phone call management, media library browsing, navigation routing, screen and display management, remote UI rendering, and vehicle data such as speed, fuel level, and HVAC status. Applications written with the Phoenix API run across Visteon SmartCore and display audio infotainment hardware platforms.
+  version: '2.0'
+  contact:
+    name: Visteon Developer Network
+    url: https://developer.visteon.com/phoenix/
+  license:
+    name: Visteon Developer License
+    url: https://developer.visteon.com/phoenix/
+  termsOfService: https://www.visteon.com/legal/
+servers:
+- url: https://developer.visteon.com/phoenix/api
+  description: Visteon Phoenix Platform API
+security:
+- ApiKeyAuth: []
+tags:
+- name: Navigation
+  description: Route planning, turn-by-turn guidance, and POI search
+paths:
+  /navigation/route:
+    get:
+      operationId: getActiveRoute
+      summary: Get Active Route
+      description: Returns the currently active navigation route including waypoints and ETA.
+      tags:
+      - Navigation
+      responses:
+        '200':
+          description: Active navigation route
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NavigationRoute'
+        '404':
+          description: No active route
+        '500':
+          description: Internal server error
+    post:
+      operationId: startNavigation
+      summary: Start Navigation
+      description: Starts navigation to a specified destination address or coordinates.
+      tags:
+      - Navigation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NavigationRequest'
+      responses:
+        '201':
+          description: Navigation started
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NavigationRoute'
+        '400':
+          description: Invalid destination
+        '500':
+          description: Internal server error
+    delete:
+      operationId: cancelNavigation
+      summary: Cancel Navigation
+      description: Cancels the currently active navigation route.
+      tags:
+      - Navigation
+      responses:
+        '204':
+          description: Navigation cancelled
+        '404':
+          description: No active route
+        '500':
+          description: Internal server error
+  /navigation/search:
+    get:
+      operationId: searchPOI
+      summary: Search Points of Interest
+      description: Searches for points of interest near the current vehicle location or a specified coordinate.
+      tags:
+      - Navigation
+      parameters:
+      - name: query
+        in: query
+        required: true
+        description: Search query string (e.g. "gas station", "restaurant")
+        schema:
+          type: string
+      - name: lat
+        in: query
+        required: false
+        description: Latitude for search center
+        schema:
+          type: number
+      - name: lon
+        in: query
+        required: false
+        description: Longitude for search center
+        schema:
+          type: number
+      - name: radius
+        in: query
+        required: false
+        description: Search radius in meters
+        schema:
+          type: integer
+          default: 5000
+      responses:
+        '200':
+          description: Points of interest results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/POIResults'
+        '400':
+          description: Invalid search parameters
+        '500':
+          description: Internal server error
+components:
+  schemas:
+    NavigationRoute:
+      type: object
+      description: A navigation route
+      properties:
+        id:
+          type: string
+        destination:
+          $ref: '#/components/schemas/Location'
+        eta:
+          type: string
+          format: date-time
+        distanceRemaining:
+          type: number
+          description: Distance remaining in meters
+        timeRemaining:
+          type: integer
+          description: Time remaining in seconds
+        isActive:
+          type: boolean
+    POIResults:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              address:
+                type: string
+              latitude:
+                type: number
+              longitude:
+                type: number
+              distance:
+                type: number
+                description: Distance from search center in meters
+              category:
+                type: string
+    NavigationRequest:
+      type: object
+      description: Navigation start request
+      required:
+      - destination
+      properties:
+        destination:
+          $ref: '#/components/schemas/Location'
+        avoidTolls:
+          type: boolean
+        avoidHighways:
+          type: boolean
+    Location:
+      type: object
+      description: A geographic location
+      properties:
+        address:
+          type: string
+        latitude:
+          type: number
+        longitude:
+          type: number
+        name:
+          type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Phoenix-API-Key
+externalDocs:
+  description: Visteon Phoenix API Documentation
+  url: https://developer.visteon.com/phoenix/api.html

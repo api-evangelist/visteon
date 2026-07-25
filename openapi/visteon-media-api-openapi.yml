@@ -1,0 +1,126 @@
+openapi: 3.1.0
+info:
+  title: Visteon Phoenix Audio Media API
+  description: The Phoenix API is an automotive-oriented JavaScript interface for building HTML5 applications on Visteon's Phoenix infotainment platform. The API provides access to vehicle cockpit domains including audio playback and volume control, phone call management, media library browsing, navigation routing, screen and display management, remote UI rendering, and vehicle data such as speed, fuel level, and HVAC status. Applications written with the Phoenix API run across Visteon SmartCore and display audio infotainment hardware platforms.
+  version: '2.0'
+  contact:
+    name: Visteon Developer Network
+    url: https://developer.visteon.com/phoenix/
+  license:
+    name: Visteon Developer License
+    url: https://developer.visteon.com/phoenix/
+  termsOfService: https://www.visteon.com/legal/
+servers:
+- url: https://developer.visteon.com/phoenix/api
+  description: Visteon Phoenix Platform API
+security:
+- ApiKeyAuth: []
+tags:
+- name: Media
+  description: Media library browsing, playback, and device management
+paths:
+  /media/library:
+    get:
+      operationId: browseMediaLibrary
+      summary: Browse Media Library
+      description: Browses the media library returning available media items from connected devices. Supports pagination and filtering by media type.
+      tags:
+      - Media
+      parameters:
+      - name: type
+        in: query
+        required: false
+        description: Filter by media type (music, video, photos)
+        schema:
+          type: string
+          enum:
+          - music
+          - video
+          - photos
+      - name: offset
+        in: query
+        required: false
+        description: Pagination offset
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        required: false
+        description: Number of items per page
+        schema:
+          type: integer
+          default: 50
+      responses:
+        '200':
+          description: Media library items
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaLibrary'
+        '500':
+          description: Internal server error
+  /media/nowplaying:
+    get:
+      operationId: getNowPlaying
+      summary: Get Now Playing
+      description: Returns information about the currently playing media track.
+      tags:
+      - Media
+      responses:
+        '200':
+          description: Currently playing track
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaTrack'
+        '404':
+          description: No media currently playing
+        '500':
+          description: Internal server error
+components:
+  schemas:
+    MediaTrack:
+      type: object
+      description: A media track or item
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        artist:
+          type: string
+        album:
+          type: string
+        duration:
+          type: integer
+          description: Duration in seconds
+        type:
+          type: string
+          enum:
+          - music
+          - video
+          - photo
+        uri:
+          type: string
+    MediaLibrary:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/MediaTrack'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Phoenix-API-Key
+externalDocs:
+  description: Visteon Phoenix API Documentation
+  url: https://developer.visteon.com/phoenix/api.html

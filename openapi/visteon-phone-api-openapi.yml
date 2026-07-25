@@ -1,0 +1,160 @@
+openapi: 3.1.0
+info:
+  title: Visteon Phoenix Audio Phone API
+  description: The Phoenix API is an automotive-oriented JavaScript interface for building HTML5 applications on Visteon's Phoenix infotainment platform. The API provides access to vehicle cockpit domains including audio playback and volume control, phone call management, media library browsing, navigation routing, screen and display management, remote UI rendering, and vehicle data such as speed, fuel level, and HVAC status. Applications written with the Phoenix API run across Visteon SmartCore and display audio infotainment hardware platforms.
+  version: '2.0'
+  contact:
+    name: Visteon Developer Network
+    url: https://developer.visteon.com/phoenix/
+  license:
+    name: Visteon Developer License
+    url: https://developer.visteon.com/phoenix/
+  termsOfService: https://www.visteon.com/legal/
+servers:
+- url: https://developer.visteon.com/phoenix/api
+  description: Visteon Phoenix Platform API
+security:
+- ApiKeyAuth: []
+tags:
+- name: Phone
+  description: Phone call management, contacts, and call history
+paths:
+  /phone/status:
+    get:
+      operationId: getPhoneStatus
+      summary: Get Phone Status
+      description: Returns the current phone connection status including Bluetooth pairing state, signal strength, and active call status.
+      tags:
+      - Phone
+      responses:
+        '200':
+          description: Phone connection status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PhoneStatus'
+        '500':
+          description: Internal server error
+  /phone/calls:
+    get:
+      operationId: listCalls
+      summary: List Active Calls
+      description: Returns a list of current active or on-hold phone calls.
+      tags:
+      - Phone
+      responses:
+        '200':
+          description: List of active calls
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CallList'
+        '500':
+          description: Internal server error
+    post:
+      operationId: makeCall
+      summary: Make Call
+      description: Initiates an outgoing phone call to the specified number.
+      tags:
+      - Phone
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CallRequest'
+      responses:
+        '201':
+          description: Call initiated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Call'
+        '400':
+          description: Invalid phone number
+        '500':
+          description: Internal server error
+  /phone/calls/{callId}:
+    delete:
+      operationId: endCall
+      summary: End Call
+      description: Terminates an active phone call.
+      tags:
+      - Phone
+      parameters:
+      - name: callId
+        in: path
+        required: true
+        description: Identifier of the call to terminate
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Call ended
+        '404':
+          description: Call not found
+        '500':
+          description: Internal server error
+components:
+  schemas:
+    Call:
+      type: object
+      description: A phone call
+      properties:
+        id:
+          type: string
+        number:
+          type: string
+        contactName:
+          type: string
+        status:
+          type: string
+          enum:
+          - active
+          - on-hold
+          - incoming
+          - outgoing
+        duration:
+          type: integer
+          description: Call duration in seconds
+    CallList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Call'
+    CallRequest:
+      type: object
+      required:
+      - number
+      properties:
+        number:
+          type: string
+          description: Phone number to call
+    PhoneStatus:
+      type: object
+      description: Phone connection and call status
+      properties:
+        isConnected:
+          type: boolean
+        deviceName:
+          type: string
+        signalStrength:
+          type: integer
+          minimum: 0
+          maximum: 5
+        hasActiveCall:
+          type: boolean
+        batteryLevel:
+          type: integer
+          minimum: 0
+          maximum: 100
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Phoenix-API-Key
+externalDocs:
+  description: Visteon Phoenix API Documentation
+  url: https://developer.visteon.com/phoenix/api.html
