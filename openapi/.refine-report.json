@@ -1,0 +1,24 @@
+{
+  "provider": "visteon",
+  "sources": [
+    "visteon-audio-api-openapi.yml",
+    "visteon-media-api-openapi.yml",
+    "visteon-navigation-api-openapi.yml",
+    "visteon-phone-api-openapi.yml",
+    "visteon-screen-management-api-openapi.yml",
+    "visteon-vehicle-api-openapi.yml"
+  ],
+  "outputs": [
+    "visteon-audio-api-openapi.yml",
+    "visteon-media-api-openapi.yml",
+    "visteon-navigation-api-openapi.yml",
+    "visteon-phone-api-openapi.yml",
+    "visteon-screen-management-api-openapi.yml",
+    "visteon-vehicle-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
