@@ -168,7 +168,7 @@ common:
   - type: DeveloperPortal
     url: https://developer.visteon.com/phoenix/
   - type: OpenAPI
-    url: openapi/visteon-phoenix-openapi.yml
+    url: openapi/_original/visteon-phoenix-openapi.yml
   - type: JSONSchema
     url: json-schema/visteon-vehicle-data-schema.json
   - type: JSONSchema
