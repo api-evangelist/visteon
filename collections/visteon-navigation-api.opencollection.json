@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Visteon Phoenix Audio Navigation API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Phoenix-API-Key",
+      "value": "{{X-Phoenix-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Navigation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Active Route",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.visteon.com/phoenix/api/navigation/route"
+          },
+          "docs": "Returns the currently active navigation route including waypoints and ETA."
+        },
+        {
+          "info": {
+            "name": "Start Navigation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer.visteon.com/phoenix/api/navigation/route",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Starts navigation to a specified destination address or coordinates."
+        },
+        {
+          "info": {
+            "name": "Cancel Navigation",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://developer.visteon.com/phoenix/api/navigation/route"
+          },
+          "docs": "Cancels the currently active navigation route."
+        },
+        {
+          "info": {
+            "name": "Search Points of Interest",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.visteon.com/phoenix/api/navigation/search",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Search query string (e.g. \"gas station\", \"restaurant\")"
+              },
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude for search center"
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude for search center"
+              },
+              {
+                "name": "radius",
+                "value": "",
+                "type": "query",
+                "description": "Search radius in meters"
+              }
+            ]
+          },
+          "docs": "Searches for points of interest near the current vehicle location or a specified coordinate."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

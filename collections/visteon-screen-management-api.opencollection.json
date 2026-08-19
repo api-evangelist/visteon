@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Visteon Phoenix Audio Screen Management API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Phoenix-API-Key",
+      "value": "{{X-Phoenix-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Screen Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Displays",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.visteon.com/phoenix/api/screen/displays"
+          },
+          "docs": "Returns all display screens available in the vehicle cockpit including instrument cluster, center stack, and passenger displays."
+        },
+        {
+          "info": {
+            "name": "Get Display",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.visteon.com/phoenix/api/screen/displays/:displayId",
+            "params": [
+              {
+                "name": "displayId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the display"
+              }
+            ]
+          },
+          "docs": "Returns configuration and state of a specific display screen."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,792 @@
+{
+  "item": [
+    {
+      "id": "c17800ce-cc9d-4342-b777-be428a04c3f0",
+      "name": "Navigation",
+      "description": {
+        "content": "Route planning, turn-by-turn guidance, and POI search",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "67f2b08d-8119-4c50-8300-37b93482cb3f",
+          "name": "Get Active Route",
+          "request": {
+            "name": "Get Active Route",
+            "description": {
+              "content": "Returns the currently active navigation route including waypoints and ETA.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "navigation",
+                "route"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a4d195a-3483-44be-85d3-7b6591fea5e2",
+              "name": "Active navigation route",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "navigation",
+                    "route"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Phoenix-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"destination\": {\n    \"address\": \"string\",\n    \"latitude\": 5638.353459580007,\n    \"longitude\": 4704.725373798674,\n    \"name\": \"string\"\n  },\n  \"eta\": \"2025-03-17T16:52:54.850Z\",\n  \"distanceRemaining\": 6456.7313519047975,\n  \"timeRemaining\": 1367,\n  \"isActive\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea2847fd-7407-4786-9573-4abdf4d45822",
+              "name": "No active route",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "navigation",
+                    "route"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Phoenix-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5257bf4b-2604-4565-adc8-985ad753ceee",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "navigation",
+                    "route"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Phoenix-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "acee5fe0-2988-4b4c-81af-c485d3cc9595",
+          "name": "Start Navigation",
+          "request": {
+            "name": "Start Navigation",
+            "description": {
+              "content": "Starts navigation to a specified destination address or coordinates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "navigation",
+                "route"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"destination\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\",\n    \"name\": \"<string>\"\n  },\n  \"avoidTolls\": \"<boolean>\",\n  \"avoidHighways\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a5391d7d-cb52-455a-b426-0271bce20d60",
+              "name": "Navigation started",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "navigation",
+                    "route"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Phoenix-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destination\": {\n    \"address\": \"string\",\n    \"latitude\": 9517.160126305747,\n    \"longitude\": 2306.140209781704,\n    \"name\": \"string\"\n  },\n  \"avoidTolls\": \"<boolean>\",\n  \"avoidHighways\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"destination\": {\n    \"address\": \"string\",\n    \"latitude\": 5638.353459580007,\n    \"longitude\": 4704.725373798674,\n    \"name\": \"string\"\n  },\n  \"eta\": \"2025-03-17T16:52:54.850Z\",\n  \"distanceRemaining\": 6456.7313519047975,\n  \"timeRemaining\": 1367,\n  \"isActive\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6192a964-f227-44b1-8d63-878a1f6df1b6",
+              "name": "Invalid destination",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "navigation",
+                    "route"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Phoenix-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destination\": {\n    \"address\": \"string\",\n    \"latitude\": 9517.160126305747,\n    \"longitude\": 2306.140209781704,\n    \"name\": \"string\"\n  },\n  \"avoidTolls\": \"<boolean>\",\n  \"avoidHighways\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0c317622-d37f-4bce-b2ab-68407722f4e6",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "navigation",
+                    "route"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Phoenix-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destination\": {\n    \"address\": \"string\",\n    \"latitude\": 9517.160126305747,\n    \"longitude\": 2306.140209781704,\n    \"name\": \"string\"\n  },\n  \"avoidTolls\": \"<boolean>\",\n  \"avoidHighways\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "df83d490-389a-419b-92a6-24547870dd4c",
+          "name": "Cancel Navigation",
+          "request": {
+            "name": "Cancel Navigation",
+            "description": {
+              "content": "Cancels the currently active navigation route.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "navigation",
+                "route"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b816184e-772e-4982-96d5-b2d941bb1fc1",
+              "name": "Navigation cancelled",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "navigation",
+                    "route"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Phoenix-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "268ab801-3ad0-40e2-994a-5b1a29f1ab16",
+              "name": "No active route",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "navigation",
+                    "route"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Phoenix-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "002fedc8-350e-47fd-8944-e4ba9c635216",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "navigation",
+                    "route"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Phoenix-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "006d88d6-2a40-4a4c-accd-d457f8beba7e",
+          "name": "Search Points of Interest",
+          "request": {
+            "name": "Search Points of Interest",
+            "description": {
+              "content": "Searches for points of interest near the current vehicle location or a specified coordinate.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "navigation",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) Search query string (e.g. \"gas station\", \"restaurant\")"
+                },
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<number>",
+                  "description": "Latitude for search center"
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<number>",
+                  "description": "Longitude for search center"
+                },
+                {
+                  "disabled": false,
+                  "key": "radius",
+                  "value": "5000",
+                  "description": "Search radius in meters"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ea6a1be3-e13f-40da-a93b-86e84c675c10",
+              "name": "Points of interest results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "navigation",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "5000"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Phoenix-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"name\": \"string\",\n      \"address\": \"string\",\n      \"latitude\": 2846.803539217848,\n      \"longitude\": 3961.270276228659,\n      \"distance\": 6999.238184722375,\n      \"category\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"address\": \"string\",\n      \"latitude\": 7349.697479902912,\n      \"longitude\": 6457.355042323697,\n      \"distance\": 9215.918115414657,\n      \"category\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "00755450-9ea1-42df-b08d-255358b84e4e",
+              "name": "Invalid search parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "navigation",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "5000"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Phoenix-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8836c9b7-5b0f-4c24-8829-660ae5f7aab4",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "navigation",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "5000"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Phoenix-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://developer.visteon.com/phoenix/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Phoenix-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "417edf84-bf2e-4a69-ada9-fa8afb4095e8",
+    "name": "Visteon Phoenix Audio Navigation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Phoenix API is an automotive-oriented JavaScript interface for building HTML5 applications on Visteon's Phoenix infotainment platform. The API provides access to vehicle cockpit domains including audio playback and volume control, phone call management, media library browsing, navigation routing, screen and display management, remote UI rendering, and vehicle data such as speed, fuel level, and HVAC status. Applications written with the Phoenix API run across Visteon SmartCore and display audio infotainment hardware platforms.\n\nContact Support:\n Name: Visteon Developer Network",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,365 @@
+{
+  "item": [
+    {
+      "id": "c59db215-0c62-4285-8a22-53a21ead7c8c",
+      "name": "Screen Management",
+      "description": {
+        "content": "Display and screen configuration for multi-screen cockpit",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "549e738b-2c8d-4387-9866-3215a42253f3",
+          "name": "List Displays",
+          "request": {
+            "name": "List Displays",
+            "description": {
+              "content": "Returns all display screens available in the vehicle cockpit including instrument cluster, center stack, and passenger displays.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "screen",
+                "displays"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4e64ff8d-0340-49c0-9d11-cb0225862571",
+              "name": "List of displays",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "screen",
+                    "displays"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Phoenix-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"resolution\": {\n        \"width\": 2456,\n        \"height\": 1360\n      },\n      \"orientation\": \"landscape\",\n      \"isOn\": false,\n      \"brightness\": 61\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"resolution\": {\n        \"width\": 4760,\n        \"height\": 7850\n      },\n      \"orientation\": \"landscape\",\n      \"isOn\": true,\n      \"brightness\": 39\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "61fc94b1-4e63-4513-81a8-b726ef5e4550",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "screen",
+                    "displays"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Phoenix-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d9aa59ff-8b5e-4aa0-95fc-95040b6d0eb4",
+          "name": "Get Display",
+          "request": {
+            "name": "Get Display",
+            "description": {
+              "content": "Returns configuration and state of a specific display screen.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "screen",
+                "displays",
+                ":displayId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "displayId",
+                  "description": "(Required) Identifier of the display"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "073687b1-5583-42b1-86d2-0d9c3d90e0f8",
+              "name": "Display configuration and state",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "screen",
+                    "displays",
+                    ":displayId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "displayId",
+                      "description": "(Required) Identifier of the display"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Phoenix-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"resolution\": {\n    \"width\": 3481,\n    \"height\": 3688\n  },\n  \"orientation\": \"landscape\",\n  \"isOn\": true,\n  \"brightness\": 19\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e63c0b2-8d7f-4ca9-8e4c-337cd53dfbc0",
+              "name": "Display not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "screen",
+                    "displays",
+                    ":displayId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "displayId",
+                      "description": "(Required) Identifier of the display"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Phoenix-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "77f29887-0d7a-4d32-9239-9bbf79c0ae60",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "screen",
+                    "displays",
+                    ":displayId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "displayId",
+                      "description": "(Required) Identifier of the display"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Phoenix-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://developer.visteon.com/phoenix/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Phoenix-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "afb02e5e-1660-41d7-8431-edb1bfc9ee3e",
+    "name": "Visteon Phoenix Audio Screen Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Phoenix API is an automotive-oriented JavaScript interface for building HTML5 applications on Visteon's Phoenix infotainment platform. The API provides access to vehicle cockpit domains including audio playback and volume control, phone call management, media library browsing, navigation routing, screen and display management, remote UI rendering, and vehicle data such as speed, fuel level, and HVAC status. Applications written with the Phoenix API run across Visteon SmartCore and display audio infotainment hardware platforms.\n\nContact Support:\n Name: Visteon Developer Network",
+      "type": "text/plain"
+    }
+  }
+}

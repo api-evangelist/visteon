@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Visteon Phoenix Audio API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Phoenix-API-Key",
+      "value": "{{X-Phoenix-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Audio",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Audio Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.visteon.com/phoenix/api/audio/status"
+          },
+          "docs": "Returns the current audio status including playback state, active audio source, volume level, and mute state."
+        },
+        {
+          "info": {
+            "name": "Get Volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.visteon.com/phoenix/api/audio/volume"
+          },
+          "docs": "Returns the current master volume level and mute status."
+        },
+        {
+          "info": {
+            "name": "Set Volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://developer.visteon.com/phoenix/api/audio/volume",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets the master volume level for the infotainment system."
+        },
+        {
+          "info": {
+            "name": "List Audio Sources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.visteon.com/phoenix/api/audio/sources"
+          },
+          "docs": "Returns all available audio sources such as FM radio, AM radio, Bluetooth audio, USB media, and auxiliary input."
+        },
+        {
+          "info": {
+            "name": "Activate Audio Source",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer.visteon.com/phoenix/api/audio/sources/:sourceId/activate",
+            "params": [
+              {
+                "name": "sourceId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the audio source to activate"
+              }
+            ]
+          },
+          "docs": "Switches the active audio source to the specified source."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

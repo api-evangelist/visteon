@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Visteon Phoenix Audio Vehicle API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Phoenix-API-Key",
+      "value": "{{X-Phoenix-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Vehicle",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Vehicle Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.visteon.com/phoenix/api/vehicle/data"
+          },
+          "docs": "Returns current vehicle telemetry data including speed, fuel level, odometer, engine status, and HVAC settings."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Visteon Phoenix Audio Media API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Phoenix-API-Key",
+      "value": "{{X-Phoenix-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Media",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Browse Media Library",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.visteon.com/phoenix/api/media/library",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by media type (music, video, photos)"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Pagination offset"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page"
+              }
+            ]
+          },
+          "docs": "Browses the media library returning available media items from connected devices. Supports pagination and filtering by media type."
+        },
+        {
+          "info": {
+            "name": "Get Now Playing",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.visteon.com/phoenix/api/media/nowplaying"
+          },
+          "docs": "Returns information about the currently playing media track."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

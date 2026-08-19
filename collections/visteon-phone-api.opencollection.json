@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Visteon Phoenix Audio Phone API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Phoenix-API-Key",
+      "value": "{{X-Phoenix-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Phone",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Phone Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.visteon.com/phoenix/api/phone/status"
+          },
+          "docs": "Returns the current phone connection status including Bluetooth pairing state, signal strength, and active call status."
+        },
+        {
+          "info": {
+            "name": "List Active Calls",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.visteon.com/phoenix/api/phone/calls"
+          },
+          "docs": "Returns a list of current active or on-hold phone calls."
+        },
+        {
+          "info": {
+            "name": "Make Call",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer.visteon.com/phoenix/api/phone/calls",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiates an outgoing phone call to the specified number."
+        },
+        {
+          "info": {
+            "name": "End Call",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://developer.visteon.com/phoenix/api/phone/calls/:callId",
+            "params": [
+              {
+                "name": "callId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the call to terminate"
+              }
+            ]
+          },
+          "docs": "Terminates an active phone call."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

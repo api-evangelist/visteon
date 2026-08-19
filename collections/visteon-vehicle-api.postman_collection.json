@@ -1,0 +1,169 @@
+{
+  "item": [
+    {
+      "id": "caf2e78a-5e71-458a-bc32-85320510850b",
+      "name": "Vehicle",
+      "description": {
+        "content": "Vehicle data including speed, fuel, HVAC, and door status",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1128ce14-c655-45b9-94fe-cb5229a54348",
+          "name": "Get Vehicle Data",
+          "request": {
+            "name": "Get Vehicle Data",
+            "description": {
+              "content": "Returns current vehicle telemetry data including speed, fuel level, odometer, engine status, and HVAC settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vehicle",
+                "data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "218f4690-4d30-4e83-9ed9-abb4060881a9",
+              "name": "Vehicle data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicle",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Phoenix-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"speed\": 8535.671096430411,\n  \"fuelLevel\": 5949,\n  \"odometer\": 45.57867182445996,\n  \"engineRunning\": true,\n  \"gearPosition\": \"3\",\n  \"hvac\": {\n    \"temperature\": 1476.8800063824672,\n    \"fanSpeed\": 0,\n    \"isAcOn\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cce98da2-689b-40e0-bd2d-8a946b2627c9",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vehicle",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Phoenix-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://developer.visteon.com/phoenix/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Phoenix-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "cde82990-a9ba-4843-b645-f9a301485722",
+    "name": "Visteon Phoenix Audio Vehicle API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Phoenix API is an automotive-oriented JavaScript interface for building HTML5 applications on Visteon's Phoenix infotainment platform. The API provides access to vehicle cockpit domains including audio playback and volume control, phone call management, media library browsing, navigation routing, screen and display management, remote UI rendering, and vehicle data such as speed, fuel level, and HVAC status. Applications written with the Phoenix API run across Visteon SmartCore and display audio infotainment hardware platforms.\n\nContact Support:\n Name: Visteon Developer Network",
+      "type": "text/plain"
+    }
+  }
+}
