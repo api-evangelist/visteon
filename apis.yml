@@ -154,6 +154,8 @@ apis:
   humanURL: https://developer.visteon.com/phoenix/api.html
   baseURL: https://developer.visteon.com/phoenix
   tags:
+  - Vehicles
+  tags_raw:
   - Vehicle
   properties:
   - type: OpenAPI
