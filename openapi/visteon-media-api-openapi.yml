@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Visteon Phoenix Audio Media API
-  description: The Phoenix API is an automotive-oriented JavaScript interface for building HTML5 applications on Visteon's Phoenix infotainment platform. The API provides access to vehicle cockpit domains including audio playback and volume control, phone call management, media library browsing, navigation routing, screen and display management, remote UI rendering, and vehicle data such as speed, fuel level, and HVAC status. Applications written with the Phoenix API run across Visteon SmartCore and display audio infotainment hardware platforms.
+  title: Visteon Phoenix Media API
+  description: The Phoenix API is an automotive-oriented JavaScript interface for building HTML5 applications on Visteon's Phoenix infotainment platform.
   version: '2.0'
   contact:
     name: Visteon Developer Network
@@ -80,6 +80,19 @@ paths:
           description: Internal server error
 components:
   schemas:
+    MediaLibrary:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/MediaTrack'
     MediaTrack:
       type: object
       description: A media track or item
@@ -103,19 +116,6 @@ components:
           - photo
         uri:
           type: string
-    MediaLibrary:
-      type: object
-      properties:
-        total:
-          type: integer
-        offset:
-          type: integer
-        limit:
-          type: integer
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/MediaTrack'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

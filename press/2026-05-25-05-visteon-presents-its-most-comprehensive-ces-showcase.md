@@ -1,7 +1,9 @@
 ---
 title: Visteon Presents Its Most Comprehensive CES Showcase ...
 url: https://www.prnewswire.com/news-releases/visteon-presents-its-most-comprehensive-ces-showcase-yet-bringing-software-defined-mobility-to-life-302652609.html
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Visteon" press release artificial intelligence'
 position: 5
 source: serpapi-google

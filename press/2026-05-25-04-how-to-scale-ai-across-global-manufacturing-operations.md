@@ -1,7 +1,9 @@
 ---
 title: How To Scale AI Across Global Manufacturing Operations
 url: https://www.visteon.com/resources-insights/automotive-intellect-blog/automotive-intellect-blog-details/2025/How-To-Scale-AI-Across-Global-Manufacturing-Operations/default.aspx
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Visteon" press release artificial intelligence'
 position: 4
 source: serpapi-google

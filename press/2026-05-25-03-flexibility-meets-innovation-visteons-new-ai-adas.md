@@ -1,7 +1,9 @@
 ---
 title: Flexibility meets innovation. Visteon's new AI-ADAS ...
 url: https://www.facebook.com/VisteonCorporation/posts/flexibility-meets-innovation-visteons-new-ai-adas-compute-module-powered-by-nvid/1488985699901215/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Visteon" press release artificial intelligence'
 position: 3
 source: serpapi-google
