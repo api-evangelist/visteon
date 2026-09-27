@@ -113,6 +113,30 @@ paths:
           description: Internal server error
 components:
   schemas:
+    VolumeUpdate:
+      type: object
+      description: Volume update request
+      properties:
+        level:
+          type: integer
+          minimum: 0
+          maximum: 100
+        mute:
+          type: boolean
+    AudioStatus:
+      type: object
+      description: Current audio system status
+      properties:
+        isPlaying:
+          type: boolean
+        activeSource:
+          type: string
+        volume:
+          type: integer
+          minimum: 0
+          maximum: 100
+        isMuted:
+          type: boolean
     AudioSourceList:
       type: object
       properties:
@@ -136,30 +160,6 @@ components:
                 - streaming
               isActive:
                 type: boolean
-    AudioStatus:
-      type: object
-      description: Current audio system status
-      properties:
-        isPlaying:
-          type: boolean
-        activeSource:
-          type: string
-        volume:
-          type: integer
-          minimum: 0
-          maximum: 100
-        isMuted:
-          type: boolean
-    VolumeUpdate:
-      type: object
-      description: Volume update request
-      properties:
-        level:
-          type: integer
-          minimum: 0
-          maximum: 100
-        mute:
-          type: boolean
     VolumeSettings:
       type: object
       description: Volume configuration

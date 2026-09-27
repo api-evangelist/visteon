@@ -119,18 +119,6 @@ paths:
           description: Internal server error
 components:
   schemas:
-    Location:
-      type: object
-      description: A geographic location
-      properties:
-        address:
-          type: string
-        latitude:
-          type: number
-        longitude:
-          type: number
-        name:
-          type: string
     NavigationRequest:
       type: object
       description: Navigation start request
@@ -164,6 +152,18 @@ components:
                 description: Distance from search center in meters
               category:
                 type: string
+    Location:
+      type: object
+      description: A geographic location
+      properties:
+        address:
+          type: string
+        latitude:
+          type: number
+        longitude:
+          type: number
+        name:
+          type: string
     NavigationRoute:
       type: object
       description: A navigation route

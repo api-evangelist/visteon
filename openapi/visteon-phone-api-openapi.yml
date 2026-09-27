@@ -117,13 +117,6 @@ components:
         duration:
           type: integer
           description: Call duration in seconds
-    CallList:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Call'
     CallRequest:
       type: object
       required:
@@ -132,6 +125,13 @@ components:
         number:
           type: string
           description: Phone number to call
+    CallList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Call'
     PhoneStatus:
       type: object
       description: Phone connection and call status
