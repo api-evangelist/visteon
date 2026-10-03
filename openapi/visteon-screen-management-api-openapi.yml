@@ -62,13 +62,6 @@ paths:
           description: Internal server error
 components:
   schemas:
-    DisplayList:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Display'
     Display:
       type: object
       description: A cockpit display screen
@@ -96,6 +89,13 @@ components:
           type: integer
           minimum: 0
           maximum: 100
+    DisplayList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Display'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

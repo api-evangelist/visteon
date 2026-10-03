@@ -119,18 +119,6 @@ paths:
           description: Internal server error
 components:
   schemas:
-    NavigationRequest:
-      type: object
-      description: Navigation start request
-      required:
-      - destination
-      properties:
-        destination:
-          $ref: '#/components/schemas/Location'
-        avoidTolls:
-          type: boolean
-        avoidHighways:
-          type: boolean
     POIResults:
       type: object
       properties:
@@ -152,18 +140,6 @@ components:
                 description: Distance from search center in meters
               category:
                 type: string
-    Location:
-      type: object
-      description: A geographic location
-      properties:
-        address:
-          type: string
-        latitude:
-          type: number
-        longitude:
-          type: number
-        name:
-          type: string
     NavigationRoute:
       type: object
       description: A navigation route
@@ -183,6 +159,30 @@ components:
           description: Time remaining in seconds
         isActive:
           type: boolean
+    NavigationRequest:
+      type: object
+      description: Navigation start request
+      required:
+      - destination
+      properties:
+        destination:
+          $ref: '#/components/schemas/Location'
+        avoidTolls:
+          type: boolean
+        avoidHighways:
+          type: boolean
+    Location:
+      type: object
+      description: A geographic location
+      properties:
+        address:
+          type: string
+        latitude:
+          type: number
+        longitude:
+          type: number
+        name:
+          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

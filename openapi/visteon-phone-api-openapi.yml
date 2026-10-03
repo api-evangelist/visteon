@@ -97,26 +97,6 @@ paths:
           description: Internal server error
 components:
   schemas:
-    Call:
-      type: object
-      description: A phone call
-      properties:
-        id:
-          type: string
-        number:
-          type: string
-        contactName:
-          type: string
-        status:
-          type: string
-          enum:
-          - active
-          - on-hold
-          - incoming
-          - outgoing
-        duration:
-          type: integer
-          description: Call duration in seconds
     CallRequest:
       type: object
       required:
@@ -150,6 +130,26 @@ components:
           type: integer
           minimum: 0
           maximum: 100
+    Call:
+      type: object
+      description: A phone call
+      properties:
+        id:
+          type: string
+        number:
+          type: string
+        contactName:
+          type: string
+        status:
+          type: string
+          enum:
+          - active
+          - on-hold
+          - incoming
+          - outgoing
+        duration:
+          type: integer
+          description: Call duration in seconds
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

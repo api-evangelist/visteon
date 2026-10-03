@@ -123,20 +123,6 @@ components:
           maximum: 100
         mute:
           type: boolean
-    AudioStatus:
-      type: object
-      description: Current audio system status
-      properties:
-        isPlaying:
-          type: boolean
-        activeSource:
-          type: string
-        volume:
-          type: integer
-          minimum: 0
-          maximum: 100
-        isMuted:
-          type: boolean
     AudioSourceList:
       type: object
       properties:
@@ -165,6 +151,20 @@ components:
       description: Volume configuration
       properties:
         level:
+          type: integer
+          minimum: 0
+          maximum: 100
+        isMuted:
+          type: boolean
+    AudioStatus:
+      type: object
+      description: Current audio system status
+      properties:
+        isPlaying:
+          type: boolean
+        activeSource:
+          type: string
+        volume:
           type: integer
           minimum: 0
           maximum: 100
