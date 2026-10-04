@@ -97,21 +97,6 @@ paths:
           description: Internal server error
 components:
   schemas:
-    CallRequest:
-      type: object
-      required:
-      - number
-      properties:
-        number:
-          type: string
-          description: Phone number to call
-    CallList:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Call'
     PhoneStatus:
       type: object
       description: Phone connection and call status
@@ -150,6 +135,21 @@ components:
         duration:
           type: integer
           description: Call duration in seconds
+    CallRequest:
+      type: object
+      required:
+      - number
+      properties:
+        number:
+          type: string
+          description: Phone number to call
+    CallList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Call'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

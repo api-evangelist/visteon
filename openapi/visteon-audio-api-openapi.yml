@@ -123,29 +123,6 @@ components:
           maximum: 100
         mute:
           type: boolean
-    AudioSourceList:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-              name:
-                type: string
-              type:
-                type: string
-                enum:
-                - fm
-                - am
-                - bluetooth
-                - usb
-                - aux
-                - streaming
-              isActive:
-                type: boolean
     VolumeSettings:
       type: object
       description: Volume configuration
@@ -170,6 +147,29 @@ components:
           maximum: 100
         isMuted:
           type: boolean
+    AudioSourceList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              type:
+                type: string
+                enum:
+                - fm
+                - am
+                - bluetooth
+                - usb
+                - aux
+                - streaming
+              isActive:
+                type: boolean
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

@@ -140,25 +140,6 @@ components:
                 description: Distance from search center in meters
               category:
                 type: string
-    NavigationRoute:
-      type: object
-      description: A navigation route
-      properties:
-        id:
-          type: string
-        destination:
-          $ref: '#/components/schemas/Location'
-        eta:
-          type: string
-          format: date-time
-        distanceRemaining:
-          type: number
-          description: Distance remaining in meters
-        timeRemaining:
-          type: integer
-          description: Time remaining in seconds
-        isActive:
-          type: boolean
     NavigationRequest:
       type: object
       description: Navigation start request
@@ -183,6 +164,25 @@ components:
           type: number
         name:
           type: string
+    NavigationRoute:
+      type: object
+      description: A navigation route
+      properties:
+        id:
+          type: string
+        destination:
+          $ref: '#/components/schemas/Location'
+        eta:
+          type: string
+          format: date-time
+        distanceRemaining:
+          type: number
+          description: Distance remaining in meters
+        timeRemaining:
+          type: integer
+          description: Time remaining in seconds
+        isActive:
+          type: boolean
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

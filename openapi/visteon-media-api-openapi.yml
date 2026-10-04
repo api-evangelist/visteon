@@ -80,19 +80,6 @@ paths:
           description: Internal server error
 components:
   schemas:
-    MediaLibrary:
-      type: object
-      properties:
-        total:
-          type: integer
-        offset:
-          type: integer
-        limit:
-          type: integer
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/MediaTrack'
     MediaTrack:
       type: object
       description: A media track or item
@@ -116,6 +103,19 @@ components:
           - photo
         uri:
           type: string
+    MediaLibrary:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/MediaTrack'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
