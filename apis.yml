@@ -167,6 +167,12 @@ apis:
   - type: DeveloperPortal
     url: https://developer.visteon.com/phoenix/
 common:
+  - type: Plans
+    url: plans/visteon-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/visteon-rate-limits.yml
+  - type: FinOps
+    url: finops/visteon-finops.yml
   - type: AgenticAccess
     url: agentic-access/visteon-agentic-access.yml
   - type: DomainSecurity
