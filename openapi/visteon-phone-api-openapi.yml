@@ -97,24 +97,6 @@ paths:
           description: Internal server error
 components:
   schemas:
-    PhoneStatus:
-      type: object
-      description: Phone connection and call status
-      properties:
-        isConnected:
-          type: boolean
-        deviceName:
-          type: string
-        signalStrength:
-          type: integer
-          minimum: 0
-          maximum: 5
-        hasActiveCall:
-          type: boolean
-        batteryLevel:
-          type: integer
-          minimum: 0
-          maximum: 100
     Call:
       type: object
       description: A phone call
@@ -135,6 +117,31 @@ components:
         duration:
           type: integer
           description: Call duration in seconds
+    PhoneStatus:
+      type: object
+      description: Phone connection and call status
+      properties:
+        isConnected:
+          type: boolean
+        deviceName:
+          type: string
+        signalStrength:
+          type: integer
+          minimum: 0
+          maximum: 5
+        hasActiveCall:
+          type: boolean
+        batteryLevel:
+          type: integer
+          minimum: 0
+          maximum: 100
+    CallList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Call'
     CallRequest:
       type: object
       required:
@@ -143,13 +150,6 @@ components:
         number:
           type: string
           description: Phone number to call
-    CallList:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Call'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
